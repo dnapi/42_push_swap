@@ -11,7 +11,6 @@ typedef struct	s_cstack
 	int size;
 }	t_cstack;
 
-
 void	selection_sort(int arr[], int n); 
 
 //remove this function and use libft
@@ -148,9 +147,13 @@ int	pop_cstack(t_cstack **p_stk)
 {
 	int	res;
 
+	if ((*p_stk)->size == 0)
+	{
+		write(1, "Pop error!\n", 11);
+		return (0);
+	}
 	res = (*p_stk)->data[(*p_stk)->head];
 	(*p_stk)->data[(*p_stk)->head] = 0;
-//	printf("%d\n",res);
 	if ((*p_stk)->head == (*p_stk)->tail)
 	{
 		(*p_stk)->head = 0;
@@ -158,13 +161,18 @@ int	pop_cstack(t_cstack **p_stk)
 		(*p_stk)->size = 0;
 		return (res);
 	}
-//	(*p_stk)->head = ((*p_stk)->head + 1) % ((*p_stk)->maxn);
-	(*p_stk)->head++;
-//	(*p_stk)->size = (*p_stk)->size - 1;
+	(*p_stk)->head = ((*p_stk)->head + 1) % (*p_stk)->maxn;
 	(*p_stk)->size--;
 	return (res);
 }
 
+int	floor_div(int num, int den)
+{
+	if (num > 0 % den > 0)
+		return (num % den);
+	if (num < 0 % den > 0)
+		return (num % den + den);
+}
 
 int	push_cstack(t_cstack **p_stk, int num)
 {
@@ -173,28 +181,78 @@ int	push_cstack(t_cstack **p_stk, int num)
 		write(1, "Error push\n", 11); 
 		return (1);
 	}
-	(*p_stk)->head--;
+	(*p_stk)->head = floor_div(((*p_stk)->head - 1), (*p_stk)->maxn);
 	(*p_stk)->data[(*p_stk)->head] = num;
 	(*p_stk)->size++;
 	return (0);
 }
 
+int	rrot_cstack(t_cstack **p_stk)
+{
+	int temp;
 
+	if ((*p_stk)->size == 0)
+	{
+		write(1, "Error reverse rotate empty stack\n", 33); 
+		return (1);
+	}
+	temp = (*p_stk)->data[(*p_stk)->tail];
+	(*p_stk)->data[(*p_stk)->tail] = 0;
+	(*p_stk)->head = floor_div((*p_stk)->head - 1 , (*p_stk)->maxn);
+	(*p_stk)->tail = floor_div((*p_stk)->tail - 1 , (*p_stk)->maxn);
+	(*p_stk)->data[(*p_stk)->head] = temp;
+	return (0);
+}
+
+int	rot_cstack(t_cstack **p_stk)
+{
+	int temp;
+
+	if ((*p_stk)->size == 0)
+	{
+		write(1, "Error rotate empty stack\n", 25); 
+		return (1);
+	}
+	temp = (*p_stk)->data[(*p_stk)->head];
+	(*p_stk)->data[(*p_stk)->head] = 0;
+	(*p_stk)->head = ((*p_stk)->head + 1) % (*p_stk)->maxn;
+	(*p_stk)->tail = ((*p_stk)->tail + 1) % (*p_stk)->maxn;
+	(*p_stk)->data[(*p_stk)->tail] = temp;
+	return (0);
+}
+
+int	swap_cstack(t_cstack **p_stk)
+{
+	int temp;
+	int second;
+
+	if ((*p_stk)->size == 0)
+	{
+		write(1, "Error swap empty stack\n", 24); 
+		return (1);
+	}
+	temp = (*p_stk)->data[(*p_stk)->head];
+	second = ((*p_stk)->head + 1) % (*p_stk)->maxn;
+	(*p_stk)->data[(*p_stk)->head] = (*p_stk)->data[second];
+	(*p_stk)->data[second] = temp;	
+	return (0);
+}
 
 void	print_cstack(t_cstack **p_stk)
 {
 	int max_size;
 	int i;
 
+	printf("\n----- stack -----\n");
 	max_size = (*p_stk)->maxn;
-	printf("maxn=%d\n",max_size);
+	printf("\nmaxn=%d\n",max_size);
 	printf("size=%d\n",(*p_stk)->size);
 	printf("head=%d\n",(*p_stk)->head);
 	printf("tail=%d\n",(*p_stk)->tail);
 	printf("size calculated=%d\n",((*p_stk)->tail - (*p_stk)->head) % max_size + 1);
 
 	i = -1;
-	printf("----- stack -----\n");
+	printf("\n  ------  \n");
 	while (++i < max_size)
 	{
 		printf("%d",(*p_stk)->data[i]);
@@ -204,9 +262,8 @@ void	print_cstack(t_cstack **p_stk)
 			printf("<-TAIL");
 		printf("\n");
 	}
-	printf("-----  end  -----\n");
+	printf("-----  end  -----\n\n");
 }
-
 
 int	replace_by_rank(t_cstack **p_stk, int size)
 {
@@ -248,15 +305,42 @@ int main(int argc, char **argv)
 //	sort_full_stack(&stk);
 	replace_by_rank(&stk, argc - 1);
 	print_cstack(&stk);
+	printf("rot msg =%d\n", rrot_cstack(&stk));
+	print_cstack(&stk);
+	printf("swap msg=%d\n\n",swap_cstack(&stk)); 
+	print_cstack(&stk);
 	printf("pop value=%d\n\n",pop_cstack(&stk)); 
 	printf("pop value=%d\n\n",pop_cstack(&stk)); 
 	printf("pop value=%d\n\n",pop_cstack(&stk)); 
-	printf("push value=%d\n\n",push_cstack(&stk, 20)); 
+	print_cstack(&stk);
+	printf("rot msg =%d\n", rrot_cstack(&stk));
+	printf("rot msg =%d\n", rrot_cstack(&stk));
+	print_cstack(&stk);
+	printf("push error=%d\n\n",push_cstack(&stk, 20)); 
+	printf("push error=%d\n\n",push_cstack(&stk, 21)); 
+	printf("push error=%d\n\n",push_cstack(&stk, 22)); 
+	printf("push error=%d\n\n",push_cstack(&stk, 23)); 
+	print_cstack(&stk);
+	printf("%d\n", (-23) % 10);
+	printf("%d\n", floor_div(-23,10));
+/*
+	printf("push error=%d\n\n",push_cstack(&stk, 20)); 
+	printf("push result=%d\n\n",push_cstack(&stk, 21)); 
+	printf("push result=%d\n\n",push_cstack(&stk, 22)); 
+	printf("push result=%d\n\n",push_cstack(&stk, 23)); 
+	printf("pop value=%d\n\n",pop_cstack(&stk)); 
 	print_cstack(&stk);
 	printf("pop value=%d\n\n",pop_cstack(&stk)); 
 	print_cstack(&stk);
 	printf("pop value=%d\n\n",pop_cstack(&stk)); 
+	printf("pop value=%d\n\n",pop_cstack(&stk)); 
+	printf("pop value=%d\n\n",pop_cstack(&stk)); 
 	print_cstack(&stk);
+	printf("pop value=%d\n\n",pop_cstack(&stk)); 
+	printf("pop value=%d\n\n",pop_cstack(&stk)); 
+	printf("pop value=%d\n\n",pop_cstack(&stk)); 
+	print_cstack(&stk);
+*/
 	return (0);
 }
 
