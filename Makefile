@@ -1,7 +1,15 @@
-NAME = libftprintf.a
+NAME = push_swap
 
-SRC = ft_printbase.c ft_printf.c ft_printstr.c ft_printchar.c
-LIBFT_DIR = libft
+SRC =	push_swap.c \
+	check_args.c \
+	libft_mod.c \
+	make_stack.c \
+	direct_sorting.c \
+	stack_push_swap.c \
+	stack_rotate.c \
+	oper_rx.c \
+	oper_px_sx.c \
+	oper_rrx.c
 
 FLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.c=.o)
@@ -9,19 +17,18 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(MAKE) -C $(LIBFT_DIR)
-	cp $(LIBFT_DIR)/libft.a $@
-	ar -ruvcs $(NAME) $(OBJ)
+	cc $(FLAGS) $(OBJ) -o  $(NAME)
+
+debug: $(OBJ)
+	cc $(FLAGS) $(OBJ) -o  $(NAME) -g
 
 %.o: %.c
-	cc $(FLAGS) -c $^ -o $@ 
+	cc $(FLAGS) -c $^ -o $@ -g 
 
 clean:
-	$(MAKE) clean -C $(LIBFT_DIR)
 	rm -f ${OBJ}
 
 fclean: clean
-	$(MAKE) fclean -C $(LIBFT_DIR)
 	rm -f ${NAME}
 
 re: fclean all
