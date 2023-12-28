@@ -29,6 +29,7 @@ void	selection_sort(int arr[], int n);
 // this is modied version of ft_atoi in libft, int -> long
 long long	ft_atoi(const char *str);
 char	*ft_strchr(const char *s, int c);
+int ft_strlen(const char *s);
 
 /// ###    end of  LIBFT        #####
 
@@ -36,7 +37,7 @@ char	*ft_strchr(const char *s, int c);
 // make_stack.c
 int	read_cstack(t_cstack *stk, int argc, char **argv);
 int	init_cstack(t_cstack *stk, int size);
-void	make_stack(t_circ_duo *stk, int arg, char **argv);
+int	make_stack(t_circ_duo *stk, int arg, char **argv);
 
 // direct_sorting.c
 int	sort_full_stack(t_cstack *stk);
