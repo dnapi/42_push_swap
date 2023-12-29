@@ -6,7 +6,7 @@
 /*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 03:58:08 by apmikov           #+#    #+#             */
-/*   Updated: 2023/12/28 03:59:14 by apmikov          ###   ########.fr       */
+/*   Updated: 2023/12/29 14:48:28 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ int	make_stack(t_circ_duo *stk, int argc, char **argv)
 	stk->a = a;
 	stk->b = b;
 	return (0);
+}
+
+int	is_sorted(t_cstack a)
+{
+	int	i;
+
+	i = 0;
+	while (++i < a.maxn)
+	{
+		if (take_el(a, i) < take_el(a, i - 1))
+			return (0);
+	}
+	return (1);
 }
 
 int	is_duplicated(t_cstack a)
@@ -65,6 +78,7 @@ int	read_cstack(t_cstack *stk, int argc, char **argv)
 		if (t > 2147483647 || t < -2147483648 || ft_strlen(argv[i + 1]) > 10)
 		{
 			free(stk->data);
+			stk->data = NULL;
 			return (1);
 		}
 		stk->data[i] = (int)t;

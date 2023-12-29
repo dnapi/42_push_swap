@@ -38,6 +38,7 @@ int ft_strlen(const char *s);
 int	read_cstack(t_cstack *stk, int argc, char **argv);
 int	init_cstack(t_cstack *stk, int size);
 int	make_stack(t_circ_duo *stk, int arg, char **argv);
+int	is_sorted(t_cstack a);
 
 // direct_sorting.c
 int	sort_full_stack(t_cstack *stk);
@@ -72,12 +73,29 @@ void	rra(t_circ_duo *stk, int print_flag);
 void	rrb(t_circ_duo *stk, int print_flag);
 void	rrr(t_circ_duo *stk, int print_flag);
 
-
 // check_args.c
 void	print_cstack(t_cstack *p_stk);
 //void	print_duo_cstack(t_cstack a, t_cstack b);
 void	print_duo_cstack(t_circ_duo stk);
 int	error_w(int condition);
 int	check_args(int argc, char **argv);
+
+// sort.c
+int	is_ordered_three(int x1, int x2, int x3);
+void	sort_two(t_circ_duo *stk);
+void	sort_three(t_circ_duo *stk);
+void	sort_small(t_circ_duo *stk);
+void	sort_medium(t_circ_duo *stk);
+
+// sort_fun.c
+void	move_quart2b(t_circ_duo *stk, int k, int i);
+void	do_magic_r(t_circ_duo *stk, int value, int flag);
+void	move_to_a_imp(t_circ_duo *stk, int value);
+
+// stack_elem.c
+int	take_el(t_cstack stk, int i);
+int	*take_all(t_cstack stk, int *dat);
+int position_in_stack(t_cstack a, int value);
+
 
 #endif

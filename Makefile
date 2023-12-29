@@ -9,7 +9,10 @@ SRC =	push_swap.c \
 	stack_rotate.c \
 	oper_rx.c \
 	oper_px_sx.c \
-	oper_rrx.c
+	oper_rrx.c \
+	sort.c \
+	sort_fun.c \
+	stack_elem.c
 
 FLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.c=.o)

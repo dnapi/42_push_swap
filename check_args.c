@@ -25,7 +25,7 @@ void	print_cstack(t_cstack *p_stk)
 	printf("head=%d\n", p_stk->head);
 	printf("tail=%d\n", p_stk->tail);
 	if (max_size > 0)
-		printf("check size=%d\n",(p_stk->tail - p_stk->head) % max_size + 1);
+		printf("check size=%d\n", (p_stk->tail - p_stk->head) % max_size + 1);
 	i = -1;
 	printf("\n  ------  \n");
 	while (++i < max_size)

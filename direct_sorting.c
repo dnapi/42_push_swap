@@ -73,6 +73,8 @@ int	replace_by_rank(t_cstack *p_stk, int size)
 	int	i;
 	int	j;
 
+	if (!p_stk)
+		return (1);
 	if (p_stk->size != p_stk->maxn)
 		return (1);
 	temp = copy_array(p_stk->data, p_stk->maxn);
@@ -93,6 +95,7 @@ int	replace_by_rank(t_cstack *p_stk, int size)
 		}
 	}
 	free(temp);
+	temp = NULL;
 	return (0);
 }
 
