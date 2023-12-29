@@ -15,6 +15,7 @@
 
 int	take_el(t_cstack stk, int i);
 void	move_to_a(t_circ_duo *stk, int value);
+void	move_to_a_imp(t_circ_duo *stk, int value);
 
 
 int	is_ordered_list(int *x, int size)
@@ -137,8 +138,11 @@ void	sort_medium(t_circ_duo *stk)
 		move_quart2b(stk, k, i);
 	move_quart2b(stk, 1, 0);
 	sort_three(stk);
-	while (stk->a.size < stk->a.maxn)
-		move_to_a(stk, stk->a.maxn - stk->a.size);
+  i = stk->a.maxn - 3;
+	while (i > 0)
+		move_to_a_imp(stk, i--);
+//	while (stk->a.size < stk->a.maxn)
+	//	move_to_a(stk, stk->a.maxn - stk->a.size);
 	return ;
 }
 
@@ -196,22 +200,78 @@ void	move_to_a(t_circ_duo *stk, int value)
 	i = -1;
 	size = stk->b.size;
 	while (++i < size)
-	{
 		if (take_el(stk->b, i) == value)
 			break ;
-	}
 	if (i == size)
 		return ;
-//  printf("i=%d\n",i);
 	if (i > size / 2)
 		repeat_f(rrb, size - i, stk, 1);
 	else if (i > 0)
 		repeat_f(rb, i, stk, 1);
-/*if (i == 0)
+	pa(stk, 1);
+	return ;
+}
+
+
+// do we use it?
+int min_value(int x, int y)
+{
+  return ((x > y) * y + (x <= y) * x);
+}
+
+int position_in_stack(t_cstack a, int value)
+{
+  int i;
+
+  i = 0;
+  while (i < a.size && value != take_el(a, i))
+    i++;
+  return (i);
+}
+
+void  do_magic_r(t_circ_duo *stk, int value, int flag)
+{
+  int i;
+  while (value != take_el(stk->b, 0))
   {
-    print_cstack(&stk->a);
-    print_cstack(&stk->b);
-  }*/
+    if (take_el(stk->a, 0) > take_el(stk->b, 0) && 
+      (take_el(stk->a, -1) == stk->a.maxn || take_el(stk->a, -1) < take_el(stk->b, 0)))
+      pa(stk, flag);
+    else
+    {
+      i = position_in_stack(stk->b, value);
+      if (i > stk->b.size / 2)
+        rrb(stk, flag);
+      else if (i > 0)
+        rb(stk, flag);
+    }
+  }
+  i = 0;
+  while (take_el(stk->a, 0) != value + 1)
+  {
+//    print_duo_cstack(*stk);
+//    printf("value=%d\n", value);
+    ra(stk, flag);
+  }
+}
+
+void	move_to_a_imp(t_circ_duo *stk, int value)
+{
+	int	i;
+
+	i = -1;
+  print_duo_cstack(*stk);
+  printf("value=%d\n", value);
+	while (++i < stk->b.size)
+		if (take_el(stk->b, i) == value)
+			break ;
+	if (i == stk->b.size)
+  {
+    rra(stk, 1);
+  //  printf("i am crazy loop\n");
+    return ;
+  }
+  do_magic_r(stk, value, 1);
 	pa(stk, 1);
 	return ;
 }
@@ -239,8 +299,9 @@ int	main(int argc, char **argv)
 		return (error_w(1));
 	replace_by_rank(&stk.a, argc - 1);
 //  print_duo_cstack(stk);
+//  printf("position=%d\n", position_in_stack(stk.a, 4));
 	sort_circ(&stk, argc - 1);
-//  print_duo_cstack(stk);
+  print_duo_cstack(stk);
 //	print_cstack(&stk.a);
 	free(stk.a.data);
 	free(stk.b.data);
