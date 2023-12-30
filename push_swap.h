@@ -30,6 +30,12 @@ void	selection_sort(int arr[], int n);
 long long	ft_atoi(const char *str);
 char	*ft_strchr(const char *s, int c);
 int ft_strlen(const char *s);
+char    *ft_strjoin_mod(char const *s1, char const *s2, char c);
+
+//ft_split.c
+char    **ft_split(char const *s, char c);
+size_t  word_count_char(char const *s, char c);
+void    clean_array(char ***arr, size_t len);
 
 /// ###    end of  LIBFT        #####
 

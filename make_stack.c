@@ -6,7 +6,7 @@
 /*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 03:58:08 by apmikov           #+#    #+#             */
-/*   Updated: 2023/12/29 14:48:28 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/12/30 12:19:53 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,18 @@ int	make_stack(t_circ_duo *stk, int argc, char **argv)
 	if (read_cstack(&a, argc, argv))
 		return (1);
 	if (is_duplicated(a))
+	{
+		free(a.data);
 		return (1);
+	}
 	if (init_cstack(&b, argc - 1))
+	{
+		free(a.data);
 		return (1);
+	}
 	stk->a = a;
 	stk->b = b;
+	replace_by_rank(&stk->a, argc - 1);
 	return (0);
 }
 
@@ -75,7 +82,7 @@ int	read_cstack(t_cstack *stk, int argc, char **argv)
 	while (++i < argc - 1)
 	{
 		t = ft_atoi(argv[i + 1]);
-		if (t > 2147483647 || t < -2147483648 || ft_strlen(argv[i + 1]) > 10)
+		if (t > 2147483647 || t < -2147483648 || ft_strlen(argv[i + 1]) > 11)
 		{
 			free(stk->data);
 			stk->data = NULL;
@@ -101,8 +108,8 @@ int	init_cstack(t_cstack *stk, int size)
 	if (!dat)
 		return (1);
 	i = -1;
-	while (i < size)
-		dat[i++] = 0;
+	while (++i < size)
+		dat[i] = 0;
 	stk->data = dat;
 	stk->maxn = size;
 	stk->size = 0;

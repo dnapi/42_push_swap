@@ -6,7 +6,7 @@
 /*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 04:42:11 by apmikov           #+#    #+#             */
-/*   Updated: 2023/12/28 04:42:14 by apmikov          ###   ########.fr       */
+/*   Updated: 2023/12/30 13:57:42 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,32 +69,50 @@ void	sort_circ(t_circ_duo *stk, int n)
 
 void	free_stack_duo(t_circ_duo *stk)
 {
-	free(stk->a.data);
+	if (stk->a.data)
+		free(stk->a.data);
 	stk->a.data = NULL;
-	free(stk->b.data);
+	if (stk->b.data)
+		free(stk->b.data);
 	stk->b.data = NULL;
+}
+	
+int	free_arg_v(char **argv, char **arg_v, int arg_c)
+{
+	if (arg_v != argv)
+		clean_array(&arg_v, arg_c + 1);
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
 	t_circ_duo	stk;
+	char 		**arg_v;
+	int			arg_c;
+	char		*str;
 
 	//remove printf !
 	//remove stdio in header
-	if (check_args(argc, argv))
-		return (1);
-	if (make_stack(&stk, argc, argv))
-		return (error_w(1));
-	replace_by_rank(&stk.a, argc - 1);
-	if (is_sorted(stk.a))
-	{
-		free_stack_duo(&stk);
+	if (argc == 1)
 		return (0);
+	arg_v = argv;
+	arg_c = argc;
+	if (argc == 2 && ft_strchr(argv[1], (int)' '))
+	{
+		str = ft_strjoin_mod(argv[0], argv[1], ' ');
+    	arg_v = ft_split(str, ' ');
+		arg_c = (int)word_count_char(argv[1], ' ') + 1;
+		free(str);
 	}
-	sort_circ(&stk, argc - 1);
-	free(stk.a.data);
-	stk.a.data = NULL;
-	free(stk.b.data);
-	stk.b.data = NULL;
+	if (check_args(arg_c, arg_v))
+		return (free_arg_v(argv, arg_v, arg_c));
+	if (make_stack(&stk, arg_c, arg_v))
+		return (error_w(free_arg_v(argv, arg_v, arg_c)));
+//	print_duo_cstack(stk);
+	if (!is_sorted(stk.a))
+		sort_circ(&stk, arg_c - 1);
+	free_arg_v(argv, arg_v, arg_c);
+	free_stack_duo(&stk);
 	return (0);
 }
+

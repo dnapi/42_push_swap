@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 14:46:18 by apimikov          #+#    #+#             */
-/*   Updated: 2023/12/29 14:46:20 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/12/30 14:53:25 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,12 @@ void	sort_medium(t_circ_duo *stk)
 {
 	int	i;
 	int	k;
+	int c100;
+	int c500;
 
-	k = stk->a.maxn / (15 + (stk->a.maxn - 100) * 35 / 400);
+	c100 = 25; // for 1000  25 -> max=674 
+	c500 = 50; // for 1000  50 -> max=5257 | 75-> 5417 | 60 ->5289 | 65-> 5296 | 55=> 5312
+	k = stk->a.maxn / (c100 + (stk->a.maxn - 100) * (c500 - c100) / 400);
 	i = -1;
 	while (++i < k)
 		move_quart2b(stk, k, i);
