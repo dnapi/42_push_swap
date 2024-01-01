@@ -6,7 +6,7 @@
 /*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 04:23:10 by apmikov           #+#    #+#             */
-/*   Updated: 2023/12/30 10:14:31 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/12/31 09:37:27 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strjoin_mod(char const *s1, char const *s2, char c)
 
 
 // this is modied version of ft_atoi in libft, int -> long
-long long	ft_atoi(const char *str)
+long long	ft_atoil(const char *str)
 {
 	long long	sign;
 	long long	answ;
@@ -65,7 +65,7 @@ long long	ft_atoi(const char *str)
 	}
 	return (sign * answ);
 }
-
+/*
 int	ft_strlen(const char *s)
 {
 	char	*pnt;
@@ -89,3 +89,5 @@ char	*ft_strchr(const char *s, int c)
 	else
 		return ((char *)0);
 }
+
+*/

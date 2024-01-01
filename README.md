@@ -1,4 +1,2 @@
-# 42_push_swap
-Project at Hive
-
-Work in Progress!
+# 42_libft
+first project at Hive ( School 42 in Helsinki)

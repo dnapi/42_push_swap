@@ -25,7 +25,8 @@ int	pop_cstack(t_cstack *p_stk)
 
 	if (p_stk->size == 0)
 	{
-		write(1, "Pop error!\n", 11);
+		if (PRINTERRORS)
+			write(1, "Pop error!\n", 11);
 		return (0);
 	}
 	res = p_stk->data[p_stk->head];
@@ -46,7 +47,8 @@ int	push_cstack(t_cstack *p_stk, int num)
 {
 	if (p_stk->size == p_stk->maxn)
 	{
-		write(1, "Error push\n", 11);
+		if (PRINTERRORS)
+			write(1, "Error push\n", 11);
 		return (1);
 	}
 	if (p_stk->maxn > 1 && p_stk->size > 0)
@@ -63,7 +65,8 @@ int	swap_cstack(t_cstack *p_stk)
 
 	if (p_stk->size == 0)
 	{
-		write(1, "Error swap empty stack\n", 24);
+		if (PRINTERRORS)
+			write(1, "Error swap empty stack\n", 24);
 		return (1);
 	}
 	temp = p_stk->data[p_stk->head];

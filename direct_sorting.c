@@ -6,7 +6,7 @@
 /*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 04:19:35 by apmikov           #+#    #+#             */
-/*   Updated: 2023/12/30 11:48:56 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/01/01 07:34:42 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,35 +98,3 @@ int	replace_by_rank(t_cstack *p_stk, int size)
 	temp = NULL;
 	return (0);
 }
-
-/*
-int	replace_by_rank(t_cstack *p_stk, int size)
-{
-	int *dat;
-	int temp[size];
-  // remove VLA
-	int	i;
-	int	j;
-
-	if (p_stk->size != p_stk->maxn)
-		return (1);
-	dat = p_stk->data;
-	i = -1;
-	while (++i < size)
-		temp[i] = dat[i];
-	selection_sort(temp, size);
-	while (--i >= 0)
-	{
-		j = -1;
-		while (++j < size)
-		{
-			if (dat[i] == temp[j])
-			{
-				dat[i] = j + 1;
-				break;
-			}
-		}
-	}
-	return (0);
-}
-  */

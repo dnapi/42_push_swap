@@ -2,6 +2,7 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 #include "push_swap.h"
+#include "checker.h"
 
 //valgrind --tool=memcheck <your_app> <your_apps_params>
 
@@ -22,15 +23,12 @@ int free_arg_v(char **argv, char **arg_v, int arg_c)
     return (1);
 }
 
-int main(int argc, char **argv)
+int make_stack_shell(t_circ_duo *p_stk, int argc, char **argv)
 {
-    t_circ_duo  stk;
     char        **arg_v;
     int         arg_c;
     char        *str;
 
-    //remove printf !
-    //remove stdio in header
     if (argc == 1)
         return (0);
     arg_v = argv;
@@ -44,21 +42,38 @@ int main(int argc, char **argv)
     }
     if (check_args(arg_c, arg_v))
         return (free_arg_v(argv, arg_v, arg_c));
-    if (make_stack(&stk, arg_c, arg_v))
+    if (make_stack(p_stk, arg_c, arg_v))
         return (error_w(free_arg_v(argv, arg_v, arg_c)));
-	print_duo_cstack(stk);
     free_arg_v(argv, arg_v, arg_c);
-    free_stack_duo(&stk);
+	return (0);
+}
 	
+int main(int argc, char **argv)
+{
+	t_circ_duo	stk;
 	char *pnt;
-	int fd = 0;
+
+	if (argc == 1)
+		return (0);
+	if (make_stack_shell(&stk, argc, argv))
+	{
+		free_stack_duo(&stk);
+		return (1);
+	}
 	pnt = get_next_line(0);
 	while (pnt)
 	{
-		printf("%s",pnt);
-		pnt = get_next_line(fd);
+		if (oper_id(pnt, &stk) == INDERROR)
+		{
+			free_stack_duo(&stk);
+			return(error_w(1));
+		}
+		pnt = get_next_line(0);
 	}
-	printf("%s",pnt);
-	close(fd);
+	if (is_sorted_duo(stk))
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
+	free_stack_duo(&stk);
 	return (0);
 }

@@ -6,25 +6,11 @@
 /*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 04:42:11 by apmikov           #+#    #+#             */
-/*   Updated: 2023/12/30 13:57:42 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/12/31 09:19:01 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-int	is_ordered_list(int *x, int size)
-{
-	int	i;
-
-	i = 0;
-	while (x[i] < x[i + 1] && i < size - 1)
-		i++;
-	if (i == size - 1)
-		return (1);
-	return (0);
-}
-*/
 
 /*
 void	repeat_f(void (*f)(t_circ_duo *, int), int n, t_circ_duo *stk, int i)
@@ -41,8 +27,10 @@ void	move_to_a(t_circ_duo *stk, int value)
 	i = -1;
 	size = stk->b.size;
 	while (++i < size)
+	{
 		if (take_el(stk->b, i) == value)
 			break ;
+	}
 	if (i == size)
 		return ;
 	if (i > size / 2)
@@ -100,7 +88,7 @@ int	main(int argc, char **argv)
 	if (argc == 2 && ft_strchr(argv[1], (int)' '))
 	{
 		str = ft_strjoin_mod(argv[0], argv[1], ' ');
-    	arg_v = ft_split(str, ' ');
+		arg_v = ft_split(str, ' ');
 		arg_c = (int)word_count_char(argv[1], ' ') + 1;
 		free(str);
 	}

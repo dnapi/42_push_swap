@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 14:45:58 by apimikov          #+#    #+#             */
-/*   Updated: 2023/12/29 14:46:00 by apimikov         ###   ########.fr       */
+/*   Updated: 2023/12/31 09:14:32 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ void	move_to_a_imp(t_circ_duo *stk, int value)
 
 	i = -1;
 	while (++i < stk->b.size)
+	{
 		if (take_el(stk->b, i) == value)
 			break ;
+	}
 	if (i == stk->b.size)
 	{
 		rra(stk, 1);

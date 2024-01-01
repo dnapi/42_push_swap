@@ -1,6 +1,7 @@
 NAME = push_swap
-
 BONUS = checker
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC =	push_swap.c \
 	check_args.c \
@@ -14,8 +15,7 @@ SRC =	push_swap.c \
 	oper_rrx.c \
 	sort.c \
 	sort_fun.c \
-	stack_elem.c \
-	ft_split.c
+	stack_elem.c
 
 SRC_BONUS = get_next_line.c \
 			get_next_line_utils.c \
@@ -32,7 +32,7 @@ SRC_BONUS = get_next_line.c \
 	sort.c \
 	sort_fun.c \
 	stack_elem.c \
-	ft_split.c
+	checker_utils.c
 
 FLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.c=.o)
@@ -40,22 +40,23 @@ OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	cc $(FLAGS) $(OBJ) -o  $(NAME)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
-debug: $(OBJ)
-	cc $(FLAGS) $(OBJ) -o  $(NAME) -g
+$(NAME): $(OBJ) $(LIBFT)
+	cc $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME) -g
 
 %.o: %.c
-	cc $(FLAGS) -c $^ -o $@ -g 
-
+	cc $(FLAGS) -c $^ -o $@ -g
+	
 bonus: $(BONUS)
 
 $(BONUS): $(OBJ_BONUS)
-	cc $(FLAGS) $(OBJ_BONUS) -o $(BONUS)
+	cc $(FLAGS) $(OBJ_BONUS) $(LIBFT) -o $(BONUS)
 
 clean:
 	rm -f ${OBJ} ${OBJ_BONUS}
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 fclean: clean
 	rm -f ${NAME} $(BONUS) 

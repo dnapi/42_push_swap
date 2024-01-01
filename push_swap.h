@@ -5,7 +5,9 @@
 # include <stdio.h>
 # include <unistd.h>
 //# include <limits.h>
+# include "libft/libft.h"
 
+# define PRINTERRORS 0
 typedef struct	s_cstack
 {
 	int	*data;
@@ -15,7 +17,6 @@ typedef struct	s_cstack
 	int size;
 }	t_cstack;
 
-// ???  do you use it ?
 typedef struct	s_circ_duo
 {
 	t_cstack a;
@@ -27,15 +28,15 @@ void	selection_sort(int arr[], int n);
 /// ###     LIBFT        #####
 
 // this is modied version of ft_atoi in libft, int -> long
-long long	ft_atoi(const char *str);
-char	*ft_strchr(const char *s, int c);
-int ft_strlen(const char *s);
+long long	ft_atoil(const char *str);
+//char	*ft_strchr(const char *s, int c);
+//int ft_strlen(const char *s);
 char    *ft_strjoin_mod(char const *s1, char const *s2, char c);
 
 //ft_split.c
-char    **ft_split(char const *s, char c);
-size_t  word_count_char(char const *s, char c);
-void    clean_array(char ***arr, size_t len);
+//char    **ft_split(char const *s, char c);
+//size_t  word_count_char(char const *s, char c);
+//void    clean_array(char ***arr, size_t len);
 
 /// ###    end of  LIBFT        #####
 
