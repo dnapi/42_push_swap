@@ -6,7 +6,7 @@
 /*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 04:23:10 by apmikov           #+#    #+#             */
-/*   Updated: 2023/12/31 09:37:27 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/01/02 12:06:23 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ char	*ft_strjoin_mod(char const *s1, char const *s2, char c)
 
 
 // this is modied version of ft_atoi in libft, int -> long
-long long	ft_atoil(const char *str)
+long	ft_atoil(const char *str)
 {
-	long long	sign;
-	long long	answ;
-	long long	llong_max;
+	long	sign;
+	long	answ;
+	long	llong_max;
 
-	llong_max = ((unsigned long long)(-1)) / 2;
+	llong_max = ((unsigned long)(-1)) / 2;
 	sign = 1;
 	answ = 0;
 	while ((8 < *str && *str < 14) || *str == ' ')

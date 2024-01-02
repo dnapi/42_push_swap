@@ -33,15 +33,16 @@ void	init_oper_fun(t_oper_stk *fun)
 
 int	oper_id(char *str, t_circ_duo *p_stk)
 {
-	char p_str[12][5];
-	t_oper_stk	fun[12];
+	char p_str[11][5];
+	t_oper_stk	fun[11];
 	int	i;
 
 	init_oper(p_str);
 	init_oper_fun(fun);
 	i = 0;
-	while (i < 12)
+	while (i < 11)
 	{
+//		p_str[i][0] = '\0';
 		if (!ft_strncmp(str, p_str[i], 4))
 		{
 			fun[i](p_stk, 0);
@@ -49,6 +50,7 @@ int	oper_id(char *str, t_circ_duo *p_stk)
 		}
 		i++;
 	}
+//	printf("i=%i\n",i);
 	return (i);
 }
 

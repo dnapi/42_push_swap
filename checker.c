@@ -56,19 +56,19 @@ int main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	if (make_stack_shell(&stk, argc, argv))
-	{
-		free_stack_duo(&stk);
 		return (1);
-	}
 	pnt = get_next_line(0);
 	while (pnt)
 	{
 		if (oper_id(pnt, &stk) == INDERROR)
 		{
+			free(pnt);
 			free_stack_duo(&stk);
 			return(error_w(1));
 		}
+		free(pnt);
 		pnt = get_next_line(0);
+
 	}
 	if (is_sorted_duo(stk))
 		write(1, "OK\n", 3);

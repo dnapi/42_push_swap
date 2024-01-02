@@ -51,7 +51,7 @@ $(NAME): $(OBJ) $(LIBFT)
 	
 bonus: $(BONUS)
 
-$(BONUS): $(OBJ_BONUS)
+$(BONUS): $(OBJ_BONUS) $(LIBFT)
 	cc $(FLAGS) $(OBJ_BONUS) $(LIBFT) -o $(BONUS)
 
 clean:

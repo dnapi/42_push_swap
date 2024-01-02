@@ -6,7 +6,7 @@
 /*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 07:23:36 by apmikov           #+#    #+#             */
-/*   Updated: 2023/12/24 07:23:39 by apmikov          ###   ########.fr       */
+/*   Updated: 2024/01/02 11:21:21 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	rrot_cstack(t_cstack *p_stk)
 
 	if (p_stk->size == 0)
 	{
-		write(1, "Error reverse rotate empty stack\n", 33);
+		if (PRINTERRORS)
+			write(1, "Error reverse rotate empty stack\n", 33);
 		return (1);
 	}
 	if (p_stk->maxn == 1)
@@ -37,7 +38,8 @@ int	rot_cstack(t_cstack *p_stk)
 
 	if (p_stk->size == 0)
 	{
-		write(1, "Error rotate empty stack\n", 25);
+		if (PRINTERRORS)
+			write(1, "Error rotate empty stack\n", 25);
 		return (1);
 	}
 	if (p_stk->maxn == 1)

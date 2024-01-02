@@ -6,7 +6,7 @@
 /*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 03:58:08 by apmikov           #+#    #+#             */
-/*   Updated: 2023/12/31 09:33:05 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/01/02 12:03:59 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	is_duplicated(t_cstack a)
 int	read_cstack(t_cstack *stk, int argc, char **argv)
 {
 	int		i;
-	long long	t;
+	long	t;
 
 	if (!stk || argc == 1)
 		return (1);
