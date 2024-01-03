@@ -1,6 +1,8 @@
 # Push swap
-Project at Hive ( School 42 in Helsinki). Implementation based on cyclic buffer on array.
-Algotrithm is inspired by [link](https://www.youtube.com/watch?v=2aMrmWOgLvU).
+Project at Hive ( School 42 in Helsinki). 
+Algotrithm is inspired by [link](https://www.youtube.com/watch?v=2aMrmWOgLvU). 
+We used cyclic buffer implemented on arrays. Allowed external functions are read, write, malloc and free. The code is written according the [Norms]{https://github.com/42School/norminette/blob/master/pdf/en.norm.pdf}.
+The average number of operation is 5040 for 500 elemetns and 600 for 100 elements.
 
 ## Overview
 

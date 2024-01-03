@@ -6,12 +6,10 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 07:22:57 by apimikov          #+#    #+#             */
-/*   Updated: 2024/01/03 07:23:24 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/01/03 09:31:04 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <fcntl.h>
 #include "get_next_line.h"
 #include "push_swap.h"
 #include "checker.h"
