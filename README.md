@@ -1,5 +1,6 @@
 # Push swap
-Project at Hive ( School 42 in Helsinki). 
+School 42 project @ [Hive Helsinki](https://www.hive.fi/en/)
+
 Algotrithm is inspired by [link](https://www.youtube.com/watch?v=2aMrmWOgLvU). 
 We used cyclic buffer implemented on arrays. Allowed external functions are read, write, malloc and free. The code is written according the [Norms](https://github.com/42School/norminette/blob/master/pdf/en.norm.pdf).
 The average number of operation is 5040 for 500 elemetns and 600 for 100 elements.
@@ -24,15 +25,6 @@ Push Swap is an algorithmic problem that involves sorting a stack of integers us
   - `rrb`: Rotate all elements of stack B downwards.
   - `rrr`: Perform `rra` and `rrb` simultaneously.
 
-## Objective
-
-The objective is to sort stack A in ascending order using a combination of the provided operations. The initial configuration of stack B is empty stack.
-
-## Constraints
-
-- The algorithm must achieve the sorting using the minimum number of operations.
-- The algorithm must be efficient and run within reasonable time constraints.
-
 ## Example
 
 Consider the following initial configuration of stack A: 2 1 3 6 5 8, stack B is empty:
@@ -47,4 +39,12 @@ pa
 pa  
 pa  
 
-
+## Requirements
+- You have to turn in a Makefile which will compile your source files. It must not relink.
+- Global variables are forbidden.
+- You have to write a program named push_swap that takes as an argument the stack a formatted as a list of integers. The first argument should be at the top of the stack (be careful about the order).
+- The program must display the smallest list of instructions possible to sort the stack a, the smallest number being at the top.
+- Instructions must be separated by a ’\n’ and nothing else.
+- The goal is to sort the stack with the lowest possible number of operations. During the evaluation process, the number of instructions found by your program will be compared against a limit: the maximum number of operations tolerated. If your program either displays a longer list or if the numbers aren’t sorted properly, your grade will be 0.
+- If no parameters are specified, the program must not display anything and give the prompt back.
+- In case of error, it must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments aren’t integers, some arguments are bigger than an integer and/or there are duplicates.
