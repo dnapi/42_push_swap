@@ -35,11 +35,11 @@ The objective is to sort stack A in ascending order using a combination of the p
 Consider the following initial configuration of stack A: 2 1 3 6 5 8, stack B is empty:
 
 `>./push_swap 2 1 3 6 5 8`
-sa  //
+sa   
 pb 
 pb
 pb
-sa
+sa<br>
 pa
 pa
 pa
