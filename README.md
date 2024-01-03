@@ -1,5 +1,6 @@
 # Push swap
-Project at Hive ( School 42 in Helsinki)
+Project at Hive ( School 42 in Helsinki). Implementation based on cyclic buffer on array.
+Algotrithm is inspired by [link](https://www.youtube.com/watch?v=2aMrmWOgLvU).
 
 ## Overview
 
@@ -23,7 +24,7 @@ Push Swap is an algorithmic problem that involves sorting a stack of integers us
 
 ## Objective
 
-The objective is to sort stack A in ascending order using a combination of the provided operations. The initial configuration of stack B is arbitrary.
+The objective is to sort stack A in ascending order using a combination of the provided operations. The initial configuration of stack B is empty stack.
 
 ## Constraints
 
