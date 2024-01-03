@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 14:45:58 by apimikov          #+#    #+#             */
-/*   Updated: 2023/12/31 09:14:32 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/01/03 07:30:23 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	move_quart2b(t_circ_duo *stk, int k, int i)
 			rr(stk, 1);
 		else
 			ra(stk, 1);
-		if (take_el(stk->b, 0) < take_el(stk->b, 1) && take_el(stk->a, 0) > take_el(stk->a, 1))
+		if (take_el(stk->b, 0) < take_el(stk->b, 1) \
+				&& take_el(stk->a, 0) > take_el(stk->a, 1))
 			ss(stk, 1);
 		if (take_el(stk->b, 0) < take_el(stk->b, 1))
 			sb(stk, 1);
@@ -43,7 +44,9 @@ void	do_magic_r(t_circ_duo *stk, int value, int flag)
 
 	while (value != take_el(stk->b, 0))
 	{
-		if (take_el(stk->a, 0) > take_el(stk->b, 0) && (take_el(stk->a, -1) == stk->a.maxn || take_el(stk->a, -1) < take_el(stk->b, 0)))
+		if (take_el(stk->a, 0) > take_el(stk->b, 0) && \
+				(take_el(stk->a, -1) == stk->a.maxn \
+					|| take_el(stk->a, -1) < take_el(stk->b, 0)))
 			pa(stk, flag);
 		else
 		{

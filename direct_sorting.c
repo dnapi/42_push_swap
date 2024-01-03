@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   direct_sorting.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 04:19:35 by apmikov           #+#    #+#             */
-/*   Updated: 2024/01/01 07:34:42 by apimikov         ###   ########.fr       */
+/*   Created: 2024/01/03 06:57:40 by apimikov          #+#    #+#             */
+/*   Updated: 2024/01/03 07:50:02 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// do I need this function ???
-int	sort_full_stack(t_cstack *stk)
-{
-// do I need this function ???
-	if (!stk)
-		return (1);
-	selection_sort(stk->data, stk->tail + 1);
-	return (0);
-}
 
 void	swap(int *a, int *b)
 {
@@ -73,10 +63,6 @@ int	replace_by_rank(t_cstack *p_stk, int size)
 	int	i;
 	int	j;
 
-	if (!p_stk)
-		return (1);
-	if (p_stk->size != p_stk->maxn)
-		return (1);
 	temp = copy_array(p_stk->data, p_stk->maxn);
 	if (!temp)
 		return (1);

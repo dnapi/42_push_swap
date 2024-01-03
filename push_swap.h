@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 12:07:23 by apimikov          #+#    #+#             */
-/*   Updated: 2024/01/02 12:13:00 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/01/03 07:37:22 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int		make_stack(t_circ_duo *stk, int arg, char **argv);
 int		is_sorted(t_cstack a);
 
 // direct_sorting.c
-int		sort_full_stack(t_cstack *stk);
 void	swap(int *a, int *b);
 void	selection_sort(int arr[], int n);
 int		replace_by_rank(t_cstack *p_stk, int size);

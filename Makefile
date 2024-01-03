@@ -29,8 +29,6 @@ SRC_BONUS = get_next_line.c \
 	oper_rx.c \
 	oper_px_sx.c \
 	oper_rrx.c \
-	sort.c \
-	sort_fun.c \
 	stack_elem.c \
 	checker_utils.c
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 04:42:11 by apmikov           #+#    #+#             */
-/*   Updated: 2024/01/02 12:15:29 by apimikov         ###   ########.fr       */
+/*   Created: 2024/01/03 07:02:28 by apimikov          #+#    #+#             */
+/*   Updated: 2024/01/03 07:34:35 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	free_stack_duo(t_circ_duo *stk)
 		free(stk->b.data);
 	stk->b.data = NULL;
 }
-	
+
 int	free_arg_v(char **argv, char **arg_v, int arg_c)
 {
 	if (arg_v != argv)
@@ -45,16 +45,15 @@ int	free_arg_v(char **argv, char **arg_v, int arg_c)
 int	main(int argc, char **argv)
 {
 	t_circ_duo	stk;
-	char 		**arg_v;
+	char		**arg_v;
 	int			arg_c;
 	char		*str;
 
-	//remove printf !
 	if (argc == 1)
 		return (0);
 	arg_v = argv;
 	arg_c = argc;
-	if (argc == 2 && ft_strchr(argv[1], (int)' '))
+	if (argc == 2 && ft_strchr(argv[1], (int) ' '))
 	{
 		str = ft_strjoin_mod(argv[0], argv[1], ' ');
 		arg_v = ft_split(str, ' ');
@@ -71,4 +70,3 @@ int	main(int argc, char **argv)
 	free_stack_duo(&stk);
 	return (0);
 }
-

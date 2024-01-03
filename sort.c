@@ -6,7 +6,7 @@
 /*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 14:46:18 by apimikov          #+#    #+#             */
-/*   Updated: 2023/12/30 14:53:25 by apimikov         ###   ########.fr       */
+/*   Updated: 2024/01/03 07:32:59 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void	sort_three(t_circ_duo *stk)
 void	sort_small(t_circ_duo *stk)
 {
 	int	size;
-	int i;
+	int	i;
 
 	size = stk->a.size;
 	while (stk->a.size > 3)
 	{
-		if (is_ordered_three(take_el(stk->a, 1), take_el(stk->a, 0) , size - 2))
+		if (is_ordered_three(take_el(stk->a, 1), take_el(stk->a, 0), size - 2))
 			sa(stk, 1);
 		if (take_el(stk->a, 0) < size - 2)
 			pb(stk, 1);
@@ -83,11 +83,11 @@ void	sort_medium(t_circ_duo *stk)
 {
 	int	i;
 	int	k;
-	int c100;
-	int c500;
+	int	c100;
+	int	c500;
 
-	c100 = 25; // for 1000  25 -> max=674 
-	c500 = 50; // for 1000  50 -> max=5257 | 75-> 5417 | 60 ->5289 | 65-> 5296 | 55=> 5312
+	c100 = 25;
+	c500 = 50;
 	k = stk->a.maxn / (c100 + (stk->a.maxn - 100) * (c500 - c100) / 400);
 	i = -1;
 	while (++i < k)

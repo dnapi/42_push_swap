@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/03 07:41:36 by apimikov          #+#    #+#             */
+/*   Updated: 2024/01/03 07:42:03 by apimikov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 #include "push_swap.h"
 
@@ -33,24 +45,22 @@ void	init_oper_fun(t_oper_stk *fun)
 
 int	oper_id(char *str, t_circ_duo *p_stk)
 {
-	char p_str[11][5];
+	char		p_str[11][5];
 	t_oper_stk	fun[11];
-	int	i;
+	int			i;
 
 	init_oper(p_str);
 	init_oper_fun(fun);
 	i = 0;
 	while (i < 11)
 	{
-//		p_str[i][0] = '\0';
 		if (!ft_strncmp(str, p_str[i], 4))
 		{
 			fun[i](p_stk, 0);
-			break;
+			break ;
 		}
 		i++;
 	}
-//	printf("i=%i\n",i);
 	return (i);
 }
 
@@ -64,7 +74,7 @@ int	is_sorted_duo(t_circ_duo stk)
 	while (++i < stk.a.maxn)
 	{
 		if (take_el(stk.a, i) != i + 1)
-			break ;			
+			break ;
 	}
 	if (i == stk.a.maxn)
 		return (1);

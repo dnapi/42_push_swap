@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_mod.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 04:23:10 by apmikov           #+#    #+#             */
-/*   Updated: 2024/01/02 12:06:23 by apimikov         ###   ########.fr       */
+/*   Created: 2024/01/03 06:58:05 by apimikov          #+#    #+#             */
+/*   Updated: 2024/01/03 07:35:48 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ char	*ft_strjoin_mod(char const *s1, char const *s2, char c)
 	return (pnt);
 }
 
-
 // this is modied version of ft_atoi in libft, int -> long
 long	ft_atoil(const char *str)
 {
@@ -65,29 +64,3 @@ long	ft_atoil(const char *str)
 	}
 	return (sign * answ);
 }
-/*
-int	ft_strlen(const char *s)
-{
-	char	*pnt;
-
-	pnt = (char *)s;
-	while (*pnt)
-		pnt++;
-	return (pnt - s);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (*s == (char)c)
-		return ((char *)s);
-	else
-		return ((char *)0);
-}
-
-*/

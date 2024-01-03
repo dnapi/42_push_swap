@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apmikov <apmikov@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: apimikov <apimikov@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/24 07:23:36 by apmikov           #+#    #+#             */
-/*   Updated: 2024/01/02 11:21:21 by apimikov         ###   ########.fr       */
+/*   Created: 2024/01/03 07:02:54 by apimikov          #+#    #+#             */
+/*   Updated: 2024/01/03 07:02:58 by apimikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
