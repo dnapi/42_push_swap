@@ -42,10 +42,10 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(OBJ) $(LIBFT)
-	cc $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME) -g
+	cc $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 %.o: %.c
-	cc $(FLAGS) -c $^ -o $@ -g
+	cc $(FLAGS) -c $^ -o $@
 	
 bonus: $(BONUS)
 
